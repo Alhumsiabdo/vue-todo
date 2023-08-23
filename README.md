@@ -1,6 +1,6 @@
 # vue-todos
 
-![Project Screenshot](public/assets/images/Screenshot 2023-08-23 072934.png)
+![Project Screenshot](images/Screenshot 2023-08-23 072934.png)
 
 This template should help get you started developing with Vue 3 in Vite.
 
