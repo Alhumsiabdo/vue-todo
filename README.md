@@ -1,6 +1,6 @@
 # vue-todos
 
-import myImage from '@/images/my-image.png'; // Adjust the path as needed
+![Image Alt Text](image-file-name.png)
 
 This template should help get you started developing with Vue 3 in Vite.
 
