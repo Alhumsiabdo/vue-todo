@@ -29,3 +29,6 @@ npm run dev
 ```sh
 npm run build
 ```
+
+Feel free to copy and paste this directly into your README file. If you have any more questions or need further assistance, just let me know!
+
