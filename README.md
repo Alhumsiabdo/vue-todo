@@ -1,4 +1,4 @@
-                                                                                              # vue-todos
+# Todos Web
 
 ![Project Screenshot](public/assets/images/project-screenshot.png)
 
