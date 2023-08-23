@@ -1,5 +1,7 @@
 # vue-todos
 
+import myImage from '@/images/my-image.png'; // Adjust the path as needed
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
