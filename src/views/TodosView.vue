@@ -17,6 +17,7 @@ watch(
   }
 );
 
+// Todo Complete Function
 const todoCompleted = computed(() => {
   return todoList.value.every((todo) => todo.isCompleted )
 })
