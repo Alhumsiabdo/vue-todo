@@ -1,11 +1,37 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
 import { uid } from "uid";
 import TodoCreator from "../components/TodoCreator.vue";
 import TodoItem from "../components/TodoItem.vue";
 import { Icon } from "@iconify/vue";
 
 const todoList = ref([]);
+
+watch(
+  todoList,
+  () => {
+    setTodoListLocalStorage();
+  },
+  {
+    deep: true,
+  }
+);
+
+const todoCompleted = computed(() => {
+  return todoList.value.every((todo) => todo.isCompleted )
+})
+
+const fetchTodoList = () => {
+  const savedTodoList = JSON.parse(localStorage.getItem("todoList"));
+  if (savedTodoList) {
+    todoList.value = savedTodoList;
+  }
+};
+fetchTodoList();
+
+const setTodoListLocalStorage = () => {
+  localStorage.setItem("todoList", JSON.stringify(todoList.value));
+};
 
 const createTodo = (todo) => {
   todoList.value.push({
@@ -22,15 +48,15 @@ const toggleTodoComplete = (todoPos) => {
 
 const editToggleTodo = (todoPos) => {
   todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing;
-}
+};
 
 const updateTodo = (todoVal, todoPos) => {
   todoList.value[todoPos].todo = todoVal;
-}
+};
 
 const deleteTodo = (todoId) => {
-  todoList.value = todoList.value.filter((todo) => todo.id !==todoId)
-}
+  todoList.value = todoList.value.filter((todo) => todo.id !== todoId);
+};
 </script>
 
 <template>
@@ -49,8 +75,12 @@ const deleteTodo = (todoId) => {
       />
     </ul>
     <p class="todos-msg" v-else>
-      <Icon icon="noto-v1:sad-but-relieved-face" width="22" />
+      <Icon icon="noto-v1:sad-but-relieved-face" width="30" />
       <span>You have no todo's to complete! Add one!</span>
+    </p>
+    <p v-if="todoCompleted && todoList.length > 0" class="todos-msg">
+      <Icon icon="noto-v1:party-popper" width="30" />
+      <span>You have completed all your todos!</span>
     </p>
   </main>
 </template>
